@@ -1,0 +1,40 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data and large artifacts (Crucial for this project)
+*.jsonl
+*.jsonl.gz
+*.npy
+*.csv
+*.zip
+*.docx
+
+# Unrelated HTML files
+article-summarizer-2.html
+EXECUTIVE_SUMMARIZER_FINAL_GOLD.html
+index.html
+portfolio-deploy/
+
+# OS specific
+.DS_Store
+Thumbs.db
