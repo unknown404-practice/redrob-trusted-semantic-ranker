@@ -1,8 +1,11 @@
 # Redrob Intelligent Candidate Discovery & Ranking Challenge
-## Team Gemini: Trusted Semantic Ranker
+## Team: Rockers by Rahul
+**Leader:** Ranadeep Saha
 
 ### Project Overview
-We have developed a robust, production-ready Proof of Concept (POC) that intelligently ranks 100,000 candidates for the "Senior AI Engineer — Founding Team" role. Our system goes beyond keyword matching by using semantic embeddings and behavioral trust signals to identify the best-fit, most available candidates while avoiding "honeypot" traps.
+We have developed a robust, production-ready Proof of Concept (POC) that intelligently ranks 100,000 candidates for the "Senior AI Engineer — Founding Team" role. 
+
+**Contact:** [ranadeep2021saha@gmail.com](mailto:ranadeep2021saha@gmail.com) | [LinkedIn](https://www.linkedin.com/in/ranadeep-saha-a03296404)
 
 ### How it Works
 1. **Deep Job Understanding:** We analyze the JD to extract core requirements (embeddings, retrieval, production ML) and "vibe" signals (shipper attitude, responsiveness).
