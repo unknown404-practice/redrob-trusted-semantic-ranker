@@ -1,6 +1,7 @@
 # Redrob Intelligent Candidate Discovery & Ranking Challenge
 ## Team: Rockers by Rahul
 **Leader:** Ranadeep Saha
+
 **Member of Google Developer Group**
 
 ### Project Overview
