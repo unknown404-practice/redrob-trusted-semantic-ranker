@@ -43,3 +43,8 @@ portfolio-deploy/
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Private project files
+TECHNICAL_DECK.html
+team_gemini.xlsx
+top_10_veterans.csv
