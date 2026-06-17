@@ -1,6 +1,7 @@
 # Redrob Intelligent Candidate Discovery & Ranking Challenge
 ## Team: Rockers by Rahul
 **Leader:** Ranadeep Saha
+**Member of Google Developer Group**
 
 ### Project Overview
 We have developed a robust, production-ready Proof of Concept (POC) that intelligently ranks 100,000 candidates for the "Senior AI Engineer — Founding Team" role. 
