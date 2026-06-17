@@ -16,19 +16,22 @@ MODEL_NAME = 'all-MiniLM-L6-v2'
 
 def extract_narrative(candidate):
     """Concatenate key fields into a single career narrative."""
-    profile = candidate.get('profile', {})
-    headline = profile.get('headline', '')
-    summary = profile.get('summary', '')
+    profile = candidate.get('profile') or {}
+    headline = profile.get('headline') or ''
+    summary = profile.get('summary') or ''
     
     # Career history
     history = []
-    for job in candidate.get('career_history', []):
-        history.append(f"{job.get('title', '')} at {job.get('company', '')}: {job.get('description', '')}")
+    career_history = candidate.get('career_history') or []
+    for job in career_history:
+        if job:
+            history.append(f"{job.get('title') or ''} at {job.get('company') or ''}: {job.get('description') or ''}")
     
     full_history = " ".join(history)
     
     # Skills
-    skills = ", ".join([s.get('name', '') for s in candidate.get('skills', [])])
+    skills_list = candidate.get('skills') or []
+    skills = ", ".join([s.get('name') or '' for s in skills_list if s])
     
     return f"{headline}. {summary}. Experience: {full_history}. Skills: {skills}"
 

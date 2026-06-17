@@ -28,6 +28,11 @@ wheels/
 *.csv
 *.zip
 *.docx
+*.pdf
+*.pptx
+*.ppt
+*.key
+*.odp
 
 # Unrelated HTML files
 article-summarizer-2.html

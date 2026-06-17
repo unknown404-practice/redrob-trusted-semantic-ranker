@@ -26,14 +26,18 @@ def calculate_trust_multiplier(signals):
     """
     Calculate a multiplier (0.5 to 1.5) based on behavioral signals.
     """
+    if not signals:
+        signals = {}
     multiplier = 1.0
     
     # Recruiter engagement
-    response_rate = signals.get('recruiter_response_rate', 0.5)
+    response_rate = signals.get('recruiter_response_rate')
+    if response_rate is None:
+        response_rate = 0.5
     multiplier += (response_rate - 0.5) * 0.4 # +/- 0.2
     
     # Activity
-    last_active = signals.get('last_active_date', '2020-01-01')
+    last_active = signals.get('last_active_date') or '2020-01-01'
     try:
         days_since_active = (datetime.now() - datetime.strptime(last_active, '%Y-%m-%d')).days
         if days_since_active < 30: multiplier += 0.1
@@ -41,11 +45,15 @@ def calculate_trust_multiplier(signals):
     except: pass
     
     # Github signal
-    github_score = signals.get('github_activity_score', -1)
+    github_score = signals.get('github_activity_score')
+    if github_score is None:
+        github_score = -1
     if github_score > 70: multiplier += 0.1
     
     # Notice period
-    notice = signals.get('notice_period_days', 60)
+    notice = signals.get('notice_period_days')
+    if notice is None:
+        notice = 60
     if notice <= 30: multiplier += 0.1
     if notice > 90: multiplier -= 0.1
     
@@ -53,17 +61,19 @@ def calculate_trust_multiplier(signals):
 
 def is_honeypot(candidate):
     """Detect impossible profiles."""
-    signals = candidate.get('redrob_signals', {})
-    profile = candidate.get('profile', {})
+    signals = candidate.get('redrob_signals') or {}
+    profile = candidate.get('profile') or {}
     
     # Rule 1: High experience with young age (simulated via signup/active gap or just high exp)
-    exp = profile.get('years_of_experience', 0)
+    exp = profile.get('years_of_experience')
+    if exp is None:
+        exp = 0
     if exp > 25: return True # Unlikely for "Senior AI Engineer" (5-9 target)
     
     # Rule 2: Expert in many skills but low duration
-    expert_count = 0
-    for s in candidate.get('skills', []):
-        if s.get('proficiency') == 'expert' and s.get('duration_months', 0) < 12:
+    skills_list = candidate.get('skills') or []
+    for s in skills_list:
+        if s and s.get('proficiency') == 'expert' and (s.get('duration_months') or 0) < 12:
             return True # Expert in < 1 year? Likely honeypot.
             
     # Rule 3: Logically impossible dates (simplified)
