@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranadeep | Full-Stack Developer & Technical Strategist</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
+    <style>
+        /* 
+           PREMIUM EDITORIAL DESIGN SYSTEM
+           Refined, Authoritative, Minimalist.
+        */
+        :root {
+            --bg-color: #fdfcf8; /* Cream */
+            --text-color: #1a1a1a; /* Deep Charcoal */
+            --accent-color: #b33a20; /* Rust Orange */
+            --border-color: rgba(26, 26, 26, 0.15);
+            --serif-font: 'Charter', 'Georgia', serif;
+            --sans-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --mono-font: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            --spacing-unit: 1.5rem;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--sans-font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-family: var(--serif-font);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 1.125rem;
+            max-width: 65ch;
+        }
+
+        .mono {
+            font-family: var(--mono-font);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        section {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            border-bottom: 1.5px solid var(--border-color);
+            position: relative;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* NAVIGATION */
+        .top-bar {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.5rem 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: var(--mono-font);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+        }
+
+        .top-bar a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .top-bar a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            border-bottom: 1.5px solid var(--border-color);
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ANIMATED LETTER TEXT STYLES */
+        @keyframes diamond-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .animate-diamond-rotate {
+            animation: diamond-rotate 10s linear infinite;
+            transform-origin: center;
+        }
+
+        .animated-letter-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 -0.05em;
+            vertical-align: middle;
+        }
+
+        .flower-outer {
+            width: 0.75em;
+            height: 0.75em;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+        }
+
+        .diamond-inner {
+            position: absolute;
+            width: 0.32em;
+            height: 0.32em;
+        }
+
+        /* HERO */
+        .hero {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 8rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.05em;
+        }
+
+        .hero-tagline {
+            font-size: 1.75rem;
+            font-family: var(--serif-font);
+            max-width: 600px;
+            font-style: italic;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            color: var(--text-color);
+        }
+
+        .hero-spline {
+            position: fixed; /* Fixed to cover the whole scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: auto;
+        }
+
+        /* Adjust sections for visibility against 3D background */
+        section {
+            padding: calc(var(--spacing-unit) * 6) 0;
+            border-bottom: 1.5px solid var(--border-color);
+            position: relative;
+            z-index: 2;
+            background: rgba(253, 252, 248, 0.85); /* Semi-transparent cream for readability */
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .hero {
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-spline {
+                opacity: 0.6;
+            }
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .expertise-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* WORK */
+        .work-header {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 0;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .project-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            font-family: var(--mono-font);
+        }
+
+        /* EXPERIENCE */
+        .exp-item {
+            margin-bottom: 3rem;
+        }
+
+        .exp-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            gap: 2rem;
+            align-items: baseline;
+        }
+
+        @media (max-width: 768px) {
+            .exp-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1.5px solid var(--border-color);
+            background: var(--bg-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-link {
+            font-family: var(--serif-font);
+            font-size: 3rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            max-width: 600px;
+            margin: 4rem auto 0 auto;
+            text-align: left;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-family: var(--mono-font);
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-family: var(--sans-font);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--text-color);
+            color: var(--bg-color);
+            border: none;
+            font-family: var(--mono-font);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(179, 58, 32, 0.2);
+        }
+
+        /* UTILITIES */
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .opacity-60 { opacity: 0.6; }
+
+        /* FLUID CURSOR CANVAS */
+        #fluid-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50; /* Above content but below interactive elements if they have higher z-index, or use pointer-events-none */
+            pointer-events: none;
+            display: block;
+        }
+
+        /* SOFT YELLOW GLOW */
+        .soft-glow {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background-image: radial-gradient(circle at center, #FFF991 0%, transparent 70%);
+            opacity: 0.6;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+
+        /* ARTISTIC BACKGROUND */
+        #artistic-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+            mix-blend-mode: multiply;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ARTISTIC BACKGROUND LAYER -->
+    <canvas id="artistic-canvas"></canvas>
+
+    <!-- FLUID CURSOR EFFECT -->
+    <canvas id="fluid-canvas"></canvas>
+
+    <!-- SVG DEFINITIONS FOR ANIMATED TEXT -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <defs>
+            <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feComponentTransfer in="SourceAlpha">
+                    <feFuncA type="table" tableValues="1 0" />
+                </feComponentTransfer>
+                <feGaussianBlur stdDeviation="3" />
+                <feOffset dx="0" dy="2" result="offsetblur" />
+                <feFlood floodColor="rgba(255,255,255,0.15)" result="color" />
+                <feComposite in2="offsetblur" operator="in" />
+                <feComposite in2="SourceAlpha" operator="in" />
+                <feMerge>
+                    <feMergeNode in="SourceGraphic" />
+                    <feMergeNode />
+                </feMerge>
+            </filter>
+            <filter id="diamondGlow" x="-150%" y="-150%" width="400%" height="400%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+                <feFlood floodColor="#d4ff4a" floodOpacity="0.3" />
+                <feComposite in2="blur" operator="in" />
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#e2ff6a" />
+                <stop offset="40%" stopColor="#d4ff4a" />
+                <stop offset="60%" stopColor="#c4f934" />
+                <stop offset="100%" stopColor="#b8ed28" />
+            </linearGradient>
+            <linearGradient id="diamondShine" x1="0%" y1="0%" x2="50%" y2="50%">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </linearGradient>
+            <radialGradient id="outerShapeGradient" cx="30%" cy="30%" r="70%">
+                <stop offset="0%" stopColor="#2a2a2a" />
+                <stop offset="100%" stopColor="#0f0f0f" />
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <div class="hero-spline">
+        <spline-viewer url="https://prod.spline.design/nzzyrGrsC34aOyvp/scene.splinecode"></spline-viewer>
+    </div>
+
+    <div class="top-bar" style="position: relative; z-index: 3;">
+        <div class="container">
+            <a href="https://github.com/unknown404-practice" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ranadeep-saha-a03296404/" target="_blank">LinkedIn</a>
+            <a href="https://www.credly.com/users/ranadeep-saha.d3a76d01" target="_blank">Credly</a>
+            <a href="https://app.netlify.com/teams/ludo-game-2vntwfs/projects" target="_blank">Netlify</a>
+            <a href="https://g.dev/ranadeepsaha02" target="_blank">Google Developer</a>
+        </div>
+    </div>
+
+    <nav style="position: sticky; z-index: 100;">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <span class="mono mb-1" style="position: relative; z-index: 2; color: var(--text-color); opacity: 0.8;">Advanced Full-Stack Developer</span>
+            <h1>
+                R
+                <span class="animated-letter-container">
+                    <svg viewBox="0 0 100 100" class="flower-outer">
+                        <path
+                            d="M50 0 C55 15, 65 15, 75 10 C70 25, 75 35, 90 35 C80 45, 80 55, 90 65 C75 65, 70 75, 75 90 C65 85, 55 85, 50 100 C45 85, 35 85, 25 90 C30 75, 25 65, 10 65 C20 55, 20 45, 10 35 C25 35, 30 25, 25 10 C35 15, 45 15, 50 0Z"
+                            fill="url(#outerShapeGradient)"
+                            filter="url(#innerShadow)"
+                        />
+                    </svg>
+                    <span class="diamond-inner flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="animate-diamond-rotate" filter="url(#diamondGlow)" style="width: 100%; height: 100%;">
+                            <path d="M50 8 L92 50 L50 92 L8 50 Z" fill="url(#diamondGradient)" />
+                            <path d="M50 8 L8 50 L50 50 Z" fill="url(#diamondShine)" />
+                            <path d="M50 18 L82 50 L50 82 L18 50 Z" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
+                        </svg>
+                    </span>
+                </span>
+                nadeep
+            </h1>
+            <p class="hero-tagline">
+                Full-Stack Developer specializing in AI-driven interfaces, Member of <a href="https://g.dev/ranadeepsaha02" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-color: var(--accent-color);">Google Developer Group</a>. Crafting technical strategy through premium digital experiences.
+            </p>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="about-grid">
+                <div>
+                    <h2 class="mb-2">Philosophy</h2>
+                    <p>
+                        I believe in the decoupling of the modern web—where infrastructure serves intelligence, and design provides the bridge. My work focuses on building robust, scalable systems that leverage client-side AI and high-performance interfaces to solve complex data challenges.
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        As an active member of the Google Developer Group, I stay at the forefront of emerging web standards and AI integration patterns, ensuring every project is both future-proof and functionally superior.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="mb-2">Expertise</h2>
+                    <div class="expertise-list">
+                        <div class="expertise-item">
+                            <span>Frontend Architecture</span>
+                            <span class="mono">React / TS / Next.js</span>
+                        </div>
+                        <div class="expertise-item">
+                            <span>AI Integration</span>
+                            <span class="mono">Transformers.js / OpenAI</span>
+                        </div>
+                        <div class="expertise-item">
+                            <span>System Design</span>
+                            <span class="mono">Node.js / Distributed Systems</span>
+                        </div>
+                        <div class="expertise-item">
+                            <span>Intelligence Design</span>
+                            <span class="mono">Strategic UI / UX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK SECTION -->
+        <section id="work">
+            <div class="work-header">
+                <h2>Selected Work</h2>
+                <div style="display: flex; gap: 2rem; align-items: baseline;">
+                    <a href="https://github.com/unknown404-practice" target="_blank" class="mono" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--accent-color);">GitHub Projects</a>
+                    <a href="https://app.netlify.com/teams/ludo-game-2vntwfs/projects" target="_blank" class="mono" style="color: inherit; text-decoration: none; border-bottom: 1px solid var(--accent-color);">Netlify Deploys</a>
+                    <span class="mono">2024 — Present</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                <!-- 01: Executive Summarizer Pro -->
+                <a href="https://executivesummarizerpro.netlify.app/" target="_blank" class="project-card" style="margin-bottom: 0;">
+                    <div class="project-info">
+                        <span class="mono">Case Study 01</span>
+                        <h3>Executive Summarizer Pro</h3>
+                        <p class="opacity-60">
+                            High-end document intelligence tool utilizing Transformers.js for client-side AI summarization. Supports PDF, DOCX, and TXT with premium editorial reporting.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React 18</span>
+                            <span class="tag">Transformers.js</span>
+                            <span class="tag">AI Integration</span>
+                        </div>
+                        <div class="mono" style="margin-top: 2rem; color: var(--accent-color); font-weight: bold; text-decoration: underline;">Launch Application &rarr;</div>
+                    </div>
+                </a>
+
+                <!-- 02: Ludo Game -->
+                <a href="https://app.netlify.com/teams/ludo-game-2vntwfs/projects" target="_blank" class="project-card" style="margin-bottom: 0;">
+                    <div class="project-info">
+                        <span class="mono">Case Study 02</span>
+                        <h3>Multiplayer Ludo</h3>
+                        <p class="opacity-60">
+                            A modern, web-based implementation of the classic board game, featuring real-time multiplayer capabilities and responsive design for global play.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Real-time</span>
+                            <span class="tag">Game Dev</span>
+                            <span class="tag">Netlify</span>
+                        </div>
+                        <div class="mono" style="margin-top: 2rem; color: var(--accent-color); font-weight: bold; text-decoration: underline;">Launch Application &rarr;</div>
+                    </div>
+                </a>
+
+                <!-- 03: SecureVote -->
+                <a href="https://github.com/unknown404-practice" target="_blank" class="project-card" style="margin-bottom: 0;">
+                    <div class="project-info">
+                        <span class="mono">Case Study 03</span>
+                        <h3>SecureVote</h3>
+                        <p class="opacity-60">
+                            A secure, transparent voting system leveraging modern cryptographic principles to ensure integrity and privacy in digital elections.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Security</span>
+                            <span class="tag">Cryptography</span>
+                            <span class="tag">GitHub</span>
+                        </div>
+                        <div class="mono" style="margin-top: 2rem; color: var(--accent-color); font-weight: bold; text-decoration: underline;">View Repository &rarr;</div>
+                    </div>
+                </a>
+
+                <!-- 04: Aegis Command -->
+                <a href="https://github.com/unknown404-practice" target="_blank" class="project-card" style="margin-bottom: 0;">
+                    <div class="project-info">
+                        <span class="mono">Case Study 04</span>
+                        <h3>Aegis Command</h3>
+                        <p class="opacity-60">
+                            Unified infrastructure management console for strategic system monitoring and automated response orchestration in complex environments.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Infrastructure</span>
+                            <span class="tag">DevOps</span>
+                            <span class="tag">Systems</span>
+                        </div>
+                        <div class="mono" style="margin-top: 2rem; color: var(--accent-color); font-weight: bold; text-decoration: underline;">View Repository &rarr;</div>
+                    </div>
+                </a>
+
+                <!-- 05: Music Flow -->
+                <a href="https://music-flow2.netlify.app/" target="_blank" class="project-card" style="margin-bottom: 0;">
+                    <div class="project-info">
+                        <span class="mono">Case Study 05</span>
+                        <h3>Music Flow</h3>
+                        <p class="opacity-60">
+                            A modern music streaming interface featuring intuitive navigation and a fluid user experience for a seamless listening journey.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Streaming UI</span>
+                            <span class="tag">Netlify</span>
+                        </div>
+                        <div class="mono" style="margin-top: 2rem; color: var(--accent-color); font-weight: bold; text-decoration: underline;">Launch Application &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2 class="mb-2">Experience</h2>
+            
+            <div class="exp-item">
+                <div class="exp-row">
+                    <span class="mono">2025 — Present</span>
+                    <div>
+                        <h3>Advanced Full-Stack Developer</h3>
+                        <p class="opacity-60">Strategic Systems & AI Integration</p>
+                    </div>
+                    <span class="mono">Remote</span>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-row">
+                    <span class="mono">2024 — Present</span>
+                    <div>
+                        <h3>Full-Stack Developer</h3>
+                        <p class="opacity-60">Google Developer Group Member</p>
+                    </div>
+                    <span class="mono">Global</span>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-row">
+                    <span class="mono">Current Focus</span>
+                    <div>
+                        <h3>Cloud Computing Aspirant</h3>
+                        <p class="opacity-60">Google Cloud Platform & Infrastructure</p>
+                    </div>
+                    <span class="mono">Strategic</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" style="text-align: center; padding: 10rem 0;">
+            <span class="mono mb-2" style="display: block;">Available for Strategic Partnerships</span>
+            <h2 class="contact-link" style="margin-bottom: 2rem; border: none; cursor: default;">Get in Touch</h2>
+            
+            <form name="portfolio-contact" method="POST" data-netlify="true" class="contact-form">
+                <!-- Netlify Forms Configuration -->
+                <input type="hidden" name="form-name" value="portfolio-contact">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            
+            <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 2rem;" class="mono">
+                <a href="https://github.com/unknown404-practice" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition);" onmouseover="this.style.borderColor='var(--accent-color)'" onmouseout="this.style.borderColor='transparent'">GitHub</a>
+                <a href="https://www.linkedin.com/in/ranadeep-saha-a03296404/" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition);" onmouseover="this.style.borderColor='var(--accent-color)'" onmouseout="this.style.borderColor='transparent'">LinkedIn</a>
+                <a href="https://www.credly.com/users/ranadeep-saha.d3a76d01" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition);" onmouseover="this.style.borderColor='var(--accent-color)'" onmouseout="this.style.borderColor='transparent'">Credly</a>
+                <a href="https://g.dev/ranadeepsaha02" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition);" onmouseover="this.style.borderColor='var(--accent-color)'" onmouseout="this.style.borderColor='transparent'">Google Dev</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container mono" style="font-size: 0.75rem; opacity: 0.5;">
+            &copy; 2024 Ranadeep. Built with a focus on technical integrity.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show contact form submission success notification
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('status') === 'success') {
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = 'color: #b33a20; background: rgba(179, 58, 32, 0.08); padding: 1rem; margin-bottom: 1.5rem; border: 1px solid var(--accent-color); font-family: var(--mono-font); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; text-align: center;';
+                successMsg.innerText = 'Message sent successfully!';
+                contactForm.prepend(successMsg);
+            }
+        }
+
+        // Simple entrance animations for sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            observer.observe(section);
+        });
+
+        /* --- WEBGL FLUID SIMULATION LOGIC --- */
+        (function() {
+            const canvas = document.getElementById('fluid-canvas');
+            const config = {
+                SIM_RESOLUTION: 128,
+                DYE_RESOLUTION: 1024,
+                DENSITY_DISSIPATION: 1.0,
+                VELOCITY_DISSIPATION: 0.2,
+                PRESSURE: 0.8,
+                PRESSURE_ITERATIONS: 20,
+                CURL: 30,
+                SPLAT_RADIUS: 0.25,
+                SPLAT_FORCE: 6000,
+                SHADING: true,
+                COLOR_UPDATE_SPEED: 10,
+                BACK_COLOR: { r: 0, g: 0, b: 0 },
+                TRANSPARENT: true
+            };
+
+            let gl, ext;
+            let pointers = [{ id: -1, texcoordX: 0, texcoordY: 0, prevTexcoordX: 0, prevTexcoordY: 0, deltaX: 0, deltaY: 0, down: false, moved: false, color: { r: 0, g: 0, b: 0 } }];
+            let dye, velocity, divergence, curlFBO, pressureFBO;
+            let copyProgram, clearProgram, splatProgram, advectionProgram, divergenceProgram, curlProgram, vorticityProgram, pressureProgram, gradienSubtractProgram, displayMaterial;
+            let lastUpdateTime = Date.now();
+
+            function initWebGL() {
+                const params = { alpha: true, depth: false, stencil: false, antialias: false };
+                gl = canvas.getContext("webgl2", params) || canvas.getContext("webgl", params);
+                if (!gl) return false;
+                const isWebGL2 = typeof WebGL2RenderingContext !== 'undefined' && gl instanceof WebGL2RenderingContext;
+                let halfFloat;
+                if (isWebGL2) { gl.getExtension("EXT_color_buffer_float"); gl.getExtension("OES_texture_float_linear"); } 
+                else { halfFloat = gl.getExtension("OES_texture_half_float"); gl.getExtension("OES_texture_half_float_linear"); }
+                ext = { 
+                    formatRGBA: getSupportedFormat(gl, isWebGL2 ? gl.RGBA16F : gl.RGBA, gl.RGBA, isWebGL2 ? gl.HALF_FLOAT : (halfFloat ? halfFloat.HALF_FLOAT_OES : gl.UNSIGNED_BYTE)),
+                    formatRG: getSupportedFormat(gl, isWebGL2 ? gl.RG16F : gl.RGBA, isWebGL2 ? gl.RG : gl.RGBA, isWebGL2 ? gl.HALF_FLOAT : (halfFloat ? halfFloat.HALF_FLOAT_OES : gl.UNSIGNED_BYTE)),
+                    formatR: getSupportedFormat(gl, isWebGL2 ? gl.R16F : gl.RGBA, isWebGL2 ? gl.RED : gl.RGBA, isWebGL2 ? gl.HALF_FLOAT : (halfFloat ? halfFloat.HALF_FLOAT_OES : gl.UNSIGNED_BYTE)),
+                    halfFloatTexType: isWebGL2 ? gl.HALF_FLOAT : (halfFloat ? halfFloat.HALF_FLOAT_OES : gl.UNSIGNED_BYTE)
+                };
+                return true;
+            }
+
+            function getSupportedFormat(gl, internalFormat, format, type) {
+                if (!supportRenderTextureFormat(gl, internalFormat, format, type)) {
+                    return { internalFormat: gl.RGBA, format: gl.RGBA };
+                }
+                return { internalFormat, format };
+            }
+
+            function supportRenderTextureFormat(gl, internalFormat, format, type) {
+                const texture = gl.createTexture();
+                gl.bindTexture(gl.TEXTURE_2D, texture);
+                gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, 4, 4, 0, format, type, null);
+                const fbo = gl.createFramebuffer();
+                gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+                return gl.checkFramebufferStatus(gl.FRAMEBUFFER) === gl.FRAMEBUFFER_COMPLETE;
+            }
+
+            function compileShader(type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            }
+
+            class Program {
+                constructor(vsSource, fsSource) {
+                    this.program = gl.createProgram();
+                    gl.attachShader(this.program, compileShader(gl.VERTEX_SHADER, vsSource));
+                    gl.attachShader(this.program, compileShader(gl.FRAGMENT_SHADER, fsSource));
+                    gl.linkProgram(this.program);
+                    this.uniforms = {};
+                    const count = gl.getProgramParameter(this.program, gl.ACTIVE_UNIFORMS);
+                    for (let i = 0; i < count; i++) {
+                        const name = gl.getActiveUniform(this.program, i).name;
+                        this.uniforms[name] = gl.getUniformLocation(this.program, name);
+                    }
+                }
+                bind() { gl.useProgram(this.program); }
+            }
+
+            function initShaders() {
+                const vs = `precision highp float; attribute vec2 aPosition; varying vec2 vUv, vL, vR, vT, vB; uniform vec2 texelSize; void main() { vUv = aPosition * 0.5 + 0.5; vL = vUv - vec2(texelSize.x, 0.0); vR = vUv + vec2(texelSize.x, 0.0); vT = vUv + vec2(0.0, texelSize.y); vB = vUv - vec2(0.0, texelSize.y); gl_Position = vec4(aPosition, 0.0, 1.0); }`;
+                const fsCopy = `precision mediump float; varying vec2 vUv; uniform sampler2D uTexture; void main() { gl_FragColor = texture2D(uTexture, vUv); }`;
+                const fsClear = `precision mediump float; varying vec2 vUv; uniform sampler2D uTexture; uniform float value; void main() { gl_FragColor = value * texture2D(uTexture, vUv); }`;
+                const fsSplat = `precision highp float; varying vec2 vUv; uniform sampler2D uTarget; uniform float aspectRatio; uniform vec3 color; uniform vec2 point; uniform float radius; void main() { vec2 p = vUv - point.xy; p.x *= aspectRatio; vec3 splat = exp(-dot(p, p) / radius) * color; gl_FragColor = vec4(texture2D(uTarget, vUv).xyz + splat, 1.0); }`;
+                const fsAdvect = `precision highp float; varying vec2 vUv; uniform sampler2D uVelocity, uSource; uniform vec2 texelSize; uniform float dt, dissipation; void main() { vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize; gl_FragColor = texture2D(uSource, coord) / (1.0 + dissipation * dt); }`;
+                const fsDiv = `precision mediump float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uVelocity; void main() { float L = texture2D(uVelocity, vL).x; float R = texture2D(uVelocity, vR).x; float T = texture2D(uVelocity, vT).y; float B = texture2D(uVelocity, vB).y; float div = 0.5 * (R - L + T - B); gl_FragColor = vec4(div, 0.0, 0.0, 1.0); }`;
+                const fsCurl = `precision mediump float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uVelocity; void main() { float L = texture2D(uVelocity, vL).y; float R = texture2D(uVelocity, vR).y; float T = texture2D(uVelocity, vT).x; float B = texture2D(uVelocity, vB).x; gl_FragColor = vec4(0.5 * (R - L - T + B), 0.0, 0.0, 1.0); }`;
+                const fsVort = `precision highp float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uVelocity, uCurl; uniform float curl, dt; void main() { float L = texture2D(uCurl, vL).x, R = texture2D(uCurl, vR).x, T = texture2D(uCurl, vT).x, B = texture2D(uCurl, vB).x, C = texture2D(uCurl, vUv).x; vec2 force = 0.5 * vec2(abs(T)-abs(B), abs(R)-abs(L)); force /= length(force) + 0.0001; gl_FragColor = vec4(texture2D(uVelocity, vUv).xy + force * curl * C * dt, 0.0, 1.0); }`;
+                const fsPress = `precision mediump float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uPressure, uDivergence; void main() { float L = texture2D(uPressure, vL).x, R = texture2D(uPressure, vR).x, T = texture2D(uPressure, vT).x, B = texture2D(uPressure, vB).x, div = texture2D(uDivergence, vUv).x; gl_FragColor = vec4((L + R + B + T - div) * 0.25, 0.0, 0.0, 1.0); }`;
+                const fsGrad = `precision mediump float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uPressure, uVelocity; void main() { float L = texture2D(uPressure, vL).x, R = texture2D(uPressure, vR).x, T = texture2D(uPressure, vT).x, B = texture2D(uPressure, vB).x; gl_FragColor = vec4(texture2D(uVelocity, vUv).xy - 0.5 * vec2(R - L, T - B), 0.0, 1.0); }`;
+                const fsDisp = `precision highp float; varying vec2 vUv, vL, vR, vT, vB; uniform sampler2D uTexture; uniform vec2 texelSize; void main() { vec3 c = texture2D(uTexture, vUv).rgb; vec3 lc = texture2D(uTexture, vL).rgb, rc = texture2D(uTexture, vR).rgb, tc = texture2D(uTexture, vT).rgb, bc = texture2D(uTexture, vB).rgb; float dx = length(rc) - length(lc), dy = length(tc) - length(bc); vec3 n = normalize(vec3(dx, dy, length(texelSize))); c *= clamp(dot(n, vec3(0.0, 0.0, 1.0)) + 0.7, 0.7, 1.0); gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)) * 0.8); }`;
+
+                copyProgram = new Program(vs, fsCopy);
+                clearProgram = new Program(vs, fsClear);
+                splatProgram = new Program(vs, fsSplat);
+                advectionProgram = new Program(vs, fsAdvect);
+                divergenceProgram = new Program(vs, fsDiv);
+                curlProgram = new Program(vs, fsCurl);
+                vorticityProgram = new Program(vs, fsVort);
+                pressureProgram = new Program(vs, fsPress);
+                gradienSubtractProgram = new Program(vs, fsGrad);
+                displayMaterial = new Program(vs, fsDisp);
+            }
+
+            function createFBO(w, h, internalFormat, format, type, param) {
+                gl.activeTexture(gl.TEXTURE0);
+                const texture = gl.createTexture();
+                gl.bindTexture(gl.TEXTURE_2D, texture);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, param);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, param);
+                gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, w, h, 0, format, type, null);
+                const fbo = gl.createFramebuffer();
+                gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+                return { texture, fbo, width: w, height: h, texelSizeX: 1/w, texelSizeY: 1/h, attach(id) { gl.activeTexture(gl.TEXTURE0 + id); gl.bindTexture(gl.TEXTURE_2D, texture); return id; } };
+            }
+
+            function createDoubleFBO(w, h, internalFormat, format, type, param) {
+                let f1 = createFBO(w, h, internalFormat, format, type, param), f2 = createFBO(w, h, internalFormat, format, type, param);
+                return { width: w, height: h, texelSizeX: f1.texelSizeX, texelSizeY: f1.texelSizeY, read: f1, write: f2, swap() { let t = this.read; this.read = this.write; this.write = t; } };
+            }
+
+            function blit(target) {
+                if (!target) { gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight); gl.bindFramebuffer(gl.FRAMEBUFFER, null); }
+                else { gl.viewport(0, 0, target.width, target.height); gl.bindFramebuffer(gl.FRAMEBUFFER, target.fbo); }
+                gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+            }
+
+            function initBuffers() {
+                const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, -1,1, 1,1, 1,-1]), gl.STATIC_DRAW);
+                const eb = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, eb); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0,1,2, 0,2,3]), gl.STATIC_DRAW);
+                gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(0);
+                const w = gl.drawingBufferWidth, h = gl.drawingBufferHeight;
+                dye = createDoubleFBO(config.DYE_RESOLUTION, config.DYE_RESOLUTION, ext.formatRGBA.internalFormat, ext.formatRGBA.format, ext.halfFloatTexType, gl.LINEAR);
+                velocity = createDoubleFBO(config.SIM_RESOLUTION, config.SIM_RESOLUTION, ext.formatRG.internalFormat, ext.formatRG.format, ext.halfFloatTexType, gl.LINEAR);
+                divergence = createFBO(config.SIM_RESOLUTION, config.SIM_RESOLUTION, ext.formatR.internalFormat, ext.formatR.format, ext.halfFloatTexType, gl.NEAREST);
+                curlFBO = createFBO(config.SIM_RESOLUTION, config.SIM_RESOLUTION, ext.formatR.internalFormat, ext.formatR.format, ext.halfFloatTexType, gl.NEAREST);
+                pressureFBO = createDoubleFBO(config.SIM_RESOLUTION, config.SIM_RESOLUTION, ext.formatR.internalFormat, ext.formatR.format, ext.halfFloatTexType, gl.NEAREST);
+            }
+
+            function splat(x, y, dx, dy, color) {
+                splatProgram.bind();
+                gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
+                gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
+                gl.uniform2f(splatProgram.uniforms.point, x, y);
+                gl.uniform3f(splatProgram.uniforms.color, dx, dy, 0.0);
+                gl.uniform1f(splatProgram.uniforms.radius, config.SPLAT_RADIUS / 100);
+                blit(velocity.write); velocity.swap();
+                gl.uniform1i(splatProgram.uniforms.uTarget, dye.read.attach(0));
+                gl.uniform3f(splatProgram.uniforms.color, color.r, color.g, color.b);
+                blit(dye.write); dye.swap();
+            }
+
+            function update() {
+                const now = Date.now(), dt = Math.min((now - lastUpdateTime) / 1000, 0.016); lastUpdateTime = now;
+                gl.disable(gl.BLEND);
+                curlProgram.bind(); gl.uniform2f(curlProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.read.attach(0)); blit(curlFBO);
+                vorticityProgram.bind(); gl.uniform2f(vorticityProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.read.attach(0)); gl.uniform1i(vorticityProgram.uniforms.uCurl, curlFBO.attach(1)); gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL); gl.uniform1f(vorticityProgram.uniforms.dt, dt); blit(velocity.write); velocity.swap();
+                divergenceProgram.bind(); gl.uniform2f(divergenceProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); gl.uniform1i(divergenceProgram.uniforms.uVelocity, velocity.read.attach(0)); blit(divergence);
+                clearProgram.bind(); gl.uniform1i(clearProgram.uniforms.uTexture, pressureFBO.read.attach(0)); gl.uniform1f(clearProgram.uniforms.value, config.PRESSURE); blit(pressureFBO.write); pressureFBO.swap();
+                pressureProgram.bind(); gl.uniform2f(pressureProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence.attach(0));
+                for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) { gl.uniform1i(pressureProgram.uniforms.uPressure, pressureFBO.read.attach(1)); blit(pressureFBO.write); pressureFBO.swap(); }
+                gradienSubtractProgram.bind(); gl.uniform2f(gradienSubtractProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); gl.uniform1i(gradienSubtractProgram.uniforms.uPressure, pressureFBO.read.attach(0)); gl.uniform1i(gradienSubtractProgram.uniforms.uVelocity, velocity.read.attach(1)); blit(velocity.write); velocity.swap();
+                advectionProgram.bind(); gl.uniform2f(advectionProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY); const vId = velocity.read.attach(0); gl.uniform1i(advectionProgram.uniforms.uVelocity, vId); gl.uniform1i(advectionProgram.uniforms.uSource, vId); gl.uniform1f(advectionProgram.uniforms.dt, dt); gl.uniform1f(advectionProgram.uniforms.dissipation, config.VELOCITY_DISSIPATION); blit(velocity.write); velocity.swap();
+                gl.uniform1i(advectionProgram.uniforms.uSource, dye.read.attach(1)); gl.uniform1f(advectionProgram.uniforms.dissipation, config.DENSITY_DISSIPATION); blit(dye.write); dye.swap();
+                gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA); gl.enable(gl.BLEND);
+                displayMaterial.bind(); gl.uniform2f(displayMaterial.uniforms.texelSize, 1/canvas.width, 1/canvas.height); gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0)); blit(null);
+                requestAnimationFrame(update);
+            }
+
+            if (initWebGL()) {
+                initShaders(); initBuffers();
+
+                function updatePointer(p, x, y) {
+                    let dx = 0;
+                    let dy = 0;
+                    if (p.moved) {
+                        dx = (x - p.texcoordX) * config.SPLAT_FORCE;
+                        dy = (y - p.texcoordY) * config.SPLAT_FORCE;
+                    }
+                    p.moved = true;
+                    splat(x, y, dx, dy, { r: Math.random()*0.2, g: Math.random()*0.2, b: Math.random()*0.5 });
+                    p.texcoordX = x; p.texcoordY = y;
+                }
+
+                window.addEventListener('mousemove', e => {
+                    updatePointer(pointers[0], e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight);
+                });
+
+                window.addEventListener('mouseenter', () => {
+                    pointers[0].moved = false;
+                });
+
+                window.addEventListener('touchstart', e => {
+                    if (e.touches.length > 0) {
+                        const touch = e.touches[0];
+                        const p = pointers[0];
+                        const x = touch.clientX / window.innerWidth, y = 1 - touch.clientY / window.innerHeight;
+                        p.moved = false;
+                        updatePointer(p, x, y);
+                    }
+                });
+
+                window.addEventListener('touchmove', e => {
+                    if (e.touches.length > 0) {
+                        const touch = e.touches[0];
+                        updatePointer(pointers[0], touch.clientX / window.innerWidth, 1 - touch.clientY / window.innerHeight);
+                    }
+                });
+
+                function resizeFluidCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                window.addEventListener('resize', resizeFluidCanvas);
+                resizeFluidCanvas();
+
+                update();
+            }
+        })();
+
+        /* --- ARTISTIC BACKGROUND LOGIC --- */
+        (function() {
+            const canvas = document.getElementById('artistic-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const lightPalette = ['#FFE5D9', '#E8F5E9', '#E3F2FD', '#FFF3E0', '#F3E5F5', '#E8EAF6', '#F1F8E9', '#FFEBEE', '#E0F7FA', '#F5F5F5'];
+            const blendModes = ['overlay', 'soft-light', 'color-dodge', 'screen', 'lighter'];
+
+            function drawPaintShape(ctx, { x, y, size, color, rotation, alpha, blend }) {
+                ctx.save();
+                ctx.globalAlpha = alpha;
+                ctx.globalCompositeOperation = blend;
+                ctx.translate(x, y);
+                ctx.rotate(rotation);
+                ctx.beginPath();
+                for (let i = 0; i < 2 * Math.PI; i += Math.PI / 5) {
+                    const r = size * (0.8 + 0.2 * Math.sin(i * 3 + Math.random()));
+                    ctx.lineTo(Math.cos(i) * r, Math.sin(i) * r);
+                }
+                ctx.closePath();
+                ctx.fillStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = size * 0.2;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < 15; i++) {
+                    drawPaintShape(ctx, {
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * window.innerHeight,
+                        size: 250 + Math.random() * 250,
+                        color: lightPalette[Math.floor(Math.random() * lightPalette.length)],
+                        rotation: Math.random() * Math.PI * 2,
+                        alpha: 0.35 + Math.random() * 0.15,
+                        blend: blendModes[Math.floor(Math.random() * blendModes.length)],
+                    });
+                }
+            }
+
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                ctx.scale(dpr, dpr);
+                draw();
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+        })();
+    </script>
+</body>
+</html>

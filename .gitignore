@@ -37,7 +37,7 @@ wheels/
 # Unrelated HTML files
 article-summarizer-2.html
 EXECUTIVE_SUMMARIZER_FINAL_GOLD.html
-index.html
+# index.html
 portfolio-deploy/
 
 # OS specific
