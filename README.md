@@ -18,3 +18,6 @@ This repository contains the core Python engine (`rank.py`) designed to efficien
 If you are a judge or selector and have any questions regarding the engine's architecture or logic, feel free to reach out:
 - **LinkedIn:** [Ranadeep Saha](https://www.linkedin.com/in/ranadeep-saha-a03296404)
 - **Email:** ranadeep2021saha@gmail.com
+
+## License
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
